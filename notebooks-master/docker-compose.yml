@@ -1,0 +1,15 @@
+version: '3'
+services:
+  jitsejan-pyspark:
+    user: root
+    privileged: true
+    image: jitsejan/pyspark-notebook
+    restart: always
+    volumes:
+      - ./notebooks:/opt/notebooks
+      - ./data:/opt/data
+      - $HOME/.aws/:/home/jovyan/.aws:ro
+    environment:
+      - GRANT_SUDO=yes
+    ports:
+      - "8558:8558"
